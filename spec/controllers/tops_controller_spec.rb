@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe TopsController do
 
-  describe "GET 'index'" do
+  describe "GET :index" do
     before do
-      get 'index'
+      get :index
     end
 
     it { response.should be_success }
