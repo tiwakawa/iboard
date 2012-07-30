@@ -18,4 +18,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'forgery'
   gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'launchy'
 end
