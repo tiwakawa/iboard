@@ -30,6 +30,6 @@ class TopicsController < ApplicationController
   end
 
   def owner_required
-    redirect_to root_path, notice: 'Forbidden' unless current_user.owner?(@topic)
+    redirect_to root_path, notice: 'Forbidden' unless @topic.owned_by?(current_user)
   end
 end

@@ -11,8 +11,4 @@ class User < ActiveRecord::Base
       user.display_name = auth["info"]["nickname"]
     end 
   end
-
-  def owner?(topic)
-    self.topics.include?(topic)
-  end
 end
