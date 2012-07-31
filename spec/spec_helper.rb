@@ -30,3 +30,10 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 end
+
+def twitter_login
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:twitter] =
+    { "provider" => "twitter", "info" => { "name" => "login_user", "nickname" => "login_user" } }
+  visit "/auth/twitter"
+end

@@ -6,5 +6,19 @@
   %p= current_user.display_name
   %p= link_to 'Logout', logout_path
 
+%hr
+
 - if flash[:notice]
-  %p= flash[:notice]
+  %p#notice= flash[:notice]
+
+- if current_user
+  = link_to 'New Topic', new_topic_path
+
+- if @topics.empty?
+  %p No Topics
+- else
+  %h2 Topic List
+  %ul
+    - @topics.each do |topic|
+      %li= link_to topic.title, topic_path(topic)
+      = "created_by #{topic.user.try(:display_name)}"
