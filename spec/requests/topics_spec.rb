@@ -13,7 +13,7 @@ describe "Topics" do
     its(:current_path) { should eql topic_path(topic) }
     it { should have_content(topic.title) }
     it { should have_content(topic.user.display_name) }
-    it { should have_content("Comment List") }
+    it { should have_content("No Comment") }
   end
 
   describe "create topic" do
@@ -40,7 +40,7 @@ describe "Topics" do
     before do
       TopicsController.any_instance.stub(:current_user).and_return(user)
       visit topic_path(topic)
-      click_link 'destroy-link'
+      click_link 'destroy-topic'
     end
 
     after do
