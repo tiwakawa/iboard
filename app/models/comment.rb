@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  include CommonMethods
+  include ConcernedWithOwn
 
   attr_accessible :body, :user_id
 

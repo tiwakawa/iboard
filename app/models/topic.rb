@@ -1,5 +1,5 @@
 class Topic < ActiveRecord::Base
-  include CommonMethods
+  include ConcernedWithOwn
 
   attr_accessible :title, :user_id
 

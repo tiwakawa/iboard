@@ -37,3 +37,8 @@ def twitter_login
     { "provider" => "twitter", "info" => { "name" => "login_user", "nickname" => "login_user" } }
   visit "/auth/twitter"
 end
+
+def logged_in_for_controller(controller, user)
+  controller.stub(:login_required) { true }
+  controller.stub(:current_user).and_return(user)
+end
