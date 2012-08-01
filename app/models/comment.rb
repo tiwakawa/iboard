@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  include ConcernedWithOwn
+  include Ownerships
 
   attr_accessible :body, :user_id
 
