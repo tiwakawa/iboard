@@ -1,0 +1,7 @@
+%h1= "New comment for #{@topic.title}"
+ 
+= render 'form'
+
+= link_to 'Back to Top', root_path
+\/
+= link_to 'Back', topic_path(@topic)
