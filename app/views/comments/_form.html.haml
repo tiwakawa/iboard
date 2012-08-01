@@ -1,0 +1,13 @@
+= form_for @comment, url: topic_comments_path(@comment.topic) do |f|
+  -if @comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
+      %ul
+        - @comment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :body
+    = f.text_area :body
+  .actions
+    = f.submit 'Save'

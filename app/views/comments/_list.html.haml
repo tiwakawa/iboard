@@ -1,0 +1,11 @@
+- if @topic.comments.empty?
+  %p No Comment
+- else
+  %h2 Comment List
+  - @topic.comments.each do |comment|
+    %div.comment{id: comment.id, style: 'border-bottom: 1px solid #ccc;'}
+      = simple_format comment.body
+      %br
+      = "(created by #{comment.user.try(:display_name) || 'unknown'})"
+      - if current_user && comment.owned_by?(current_user)
+        = link_to 'Destroy', topic_comment_path(@topic, comment), id: 'destroy-comment', data: { confirm: 'Are you sure?' }, method: :delete

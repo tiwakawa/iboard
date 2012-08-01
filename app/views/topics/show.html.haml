@@ -1,4 +1,3 @@
-%p#notice= flash[:notice]
 
 %p
   %b Title:
@@ -8,11 +7,16 @@
   = @topic.user.try(:display_name)
 
 - if current_user && @topic.owned_by?(current_user)
-  %p= link_to 'Destroy', topic_path(@topic), id: 'destroy-link', confirm: 'Are you sure?', method: :delete
+  %p= link_to 'Destroy', topic_path(@topic), id: 'destroy-topic', data: { confirm: 'Are you sure?' }, method: :delete
   
 %hr
 
-%h2 Comment List
-%h3 Under Construction...
+- if flash[:notice]
+  %p#notice= flash[:notice]
 
-= link_to 'Back', root_path
+- if current_user
+  = link_to 'New Comment', new_topic_comment_path(@topic)
+
+= render partial: 'comments/list'
+
+%p= link_to 'Back', root_path
