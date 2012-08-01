@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe User do
 
+  describe "association" do
+    before do
+      FactoryGirl.create(:user)
+    end
+    it { should have_many :topics }
+  end
+
   describe "self.create_with_omniauth" do
     let(:auth) { { "provider" => "twitter", "uid" => "12345", "info" => { "name" => "test", "nickname" => "test" } } }
     let(:user) { User.create_with_omniauth(auth) }

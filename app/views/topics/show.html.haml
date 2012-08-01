@@ -1,0 +1,18 @@
+%p#notice= flash[:notice]
+
+%p
+  %b Title:
+  = @topic.title
+%p
+  %b User:
+  = @topic.user.try(:display_name)
+
+- if current_user && @topic.owned_by?(current_user)
+  %p= link_to 'Destroy', topic_path(@topic), id: 'destroy-link', confirm: 'Are you sure?', method: :delete
+  
+%hr
+
+%h2 Comment List
+%h3 Under Construction...
+
+= link_to 'Back', root_path
